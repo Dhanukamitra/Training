@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/hello/is" name="helloTestISAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET">
+        <inSequence>
+            <log level="custom">
+                <property name="IN_Message" value="IN_Message"/>
+            </log>
+            <property expression="$url:first_name" name="firstName" scope="default" type="STRING"/>
+            <property expression="$url:last_name" name="lastName" scope="default" type="STRING"/>
+            <payloadFactory media-type="json">
+                <format>{"Hi" : "$1 $2"}</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:firstName"/>
+                    <arg evaluator="xml" expression="$ctx:lastName"/>
+                </args>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
