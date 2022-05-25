@@ -1,22 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<api context="/hello/is" name="helloTestISAPI" xmlns="http://ws.apache.org/ns/synapse">
-    <resource methods="GET">
+<?xml version="1.0" encoding="UTF-8"?><api xmlns="http://ws.apache.org/ns/synapse" name="helloTestAPI" context="/hello">
+    <resource methods="POST GET">
         <inSequence>
+            <property name="messageType" value="application/xml" scope="axis2"/>
             <log level="custom">
                 <property name="IN_Message" value="IN_Message"/>
+                <property name="Incoming_Request_body" expression="$body"/>
+                <property name="Incoming_Request_envelope" expression="."/>
             </log>
-            <property expression="$url:first_name" name="firstName" scope="default" type="STRING"/>
-            <property expression="$url:last_name" name="lastName" scope="default" type="STRING"/>
-            <payloadFactory media-type="json">
-                <format>{"Hi" : "$1 $2"}</format>
+            <property name="Name" expression="$body/Request/Name" scope="default" type="STRING"/>
+            <log level="custom">
+                <property name="Value from Context" expression="$ctx:Name"/>
+                <property name="Vaue from Property" expression="get-property('Name')"/>
+            </log>
+            <call>
+                <endpoint>
+                    <http uri-template="https://run.mocky.io/v3/ac247693-a4e3-4260-bee0-f910f98878bb"/>
+                </endpoint>
+            </call>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <property name="messageType" value="application/json" scope="axis2"/>
+            <log level="custom">
+                <property name="OutSequence" expression="json-eval($)"/>
+            </log>
+            <payloadFactory media-type="xml">
+                <format>
+                    <Response xmlns="">
+                        <From>$1</From>
+                        <Name>$2</Name>
+                    </Response>
+                </format>
                 <args>
-                    <arg evaluator="xml" expression="$ctx:firstName"/>
-                    <arg evaluator="xml" expression="$ctx:lastName"/>
+                    <arg evaluator="json" expression="$.response"/>
+                    <arg evaluator="xml" expression="$ctx:Name"/>
                 </args>
             </payloadFactory>
             <respond/>
-        </inSequence>
-        <outSequence/>
-        <faultSequence/>
+        </outSequence>
     </resource>
 </api>
