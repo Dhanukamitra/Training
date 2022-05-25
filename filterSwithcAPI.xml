@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><api xmlns="http://ws.apache.org/ns/synapse" name="filterSwithcAPI" context="/filterswitch">
+    <resource methods="POST">
+        <inSequence>
+            <log level="custom">
+                <property name="IN_Message" value="IN_Message"/>
+            </log>
+            <property name="messageType" value="application/xml" scope="axis2"/>
+            <property name="Name" expression="$body/Request/CompanyName" scope="default" type="STRING"/>
+            <switch source="$ctx:Name">
+                <case regex="Mitrai">
+                    <log level="custom">
+                        <property name="Mitrai" value="Block Executed"/>
+                    </log>
+                </case>
+                <case regex="IBM">
+                    <log level="custom">
+                        <property name="IBM" value="Block Executed"/>
+                    </log>
+                </case>
+                <default>
+                    <log level="custom">
+                        <property name="Other Company" value="Block Executed"/>
+                    </log>
+                </default>
+            </switch>
+            <drop/>
+            <filter source="$ctx:Name" regex="Mitrai">
+                <then>
+                    <log level="custom">
+                        <property name="Mitrai" value="Block Executed"/>
+                    </log>
+                </then>
+                <else>
+                    <log level="custom">
+                        <property name="Else" value="Block Executed"/>
+                    </log>
+                </else>
+            </filter>
+        </inSequence>
+    </resource>
+</api>
