@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><sequence xmlns="http://ws.apache.org/ns/synapse" name="xslt">
+    <property name="messageType" value="application/xml" scope="axis2"/>
+    <xslt key="convert.xslt"/>
+    <respond/>
+</sequence>

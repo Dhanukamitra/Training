@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="SampleDataServiceSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="IN_MESSAGE" value="IN_MESSAGE"/>
+    </log>
+    <property name="messageType" scope="axis2" type="STRING" value="application/xml"/>
+    <header name="soapAction" scope="transport" value="urn:selectALLOperation"/>
+    <call>
+        <endpoint key="SampleDataServiceEP"/>
+    </call>
+    <property name="messageType" scope="axis2" type="STRING" value="application/soap+xml"/>
+    <log level="custom">
+        <property expression="$body" name="OUT_MESSAGE"/>
+    </log>
+    <respond/>
+</sequence>

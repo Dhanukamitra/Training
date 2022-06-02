@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><sequence xmlns="http://ws.apache.org/ns/synapse" name="SampleScriptSeq">
+    <property name="messageType" value="application/xml" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="TIME_1" expression="get-property('SYSTEM_TIME')" scope="default"/>
+    <script language="js">java.lang.Thread.sleep(10000);</script>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="TIME_2" expression="get-property('SYSTEM_TIME')" scope="default"/>
+    <script language="js">var time1 = mc.getProperty("TIME_1");
+ var time2 = mc.getProperty("TIME_2");
+ var timeTaken = time2 - time1;
+ print("Time Duration :  " + timeTaken + " ms ");
+ mc.setProperty("RESPONSE_TIME", timeTaken);</script>
+    <log level="custom">
+        <property xmlns:ns="http://org.apache.synapse/xsd" name="Property_of_Script" expression="$ctx:RESPONSE_TIME"/>
+    </log>
+</sequence>
+ 

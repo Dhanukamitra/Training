@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="SampleDataServiceSeq" groupId="org.mitrai.com.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/SampleDataServiceSeq.xml</file>
+    </artifact>
+    <artifact name="SampleDataServiceEP" groupId="org.mitrai.com.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/SampleDataServiceEP.xml</file>
+    </artifact>
+    <artifact name="SampleDataServiceAPI" groupId="org.mitrai.com.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/SampleDataServiceAPI.xml</file>
+    </artifact>
+    <artifact name="SampleDataServiceAPI_swagger" groupId="org.mitrai.com.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/SampleDataServiceAPI_swagger.yaml</file>
+    </artifact>
+    <artifact name="SampleDataServiceAPI_metadata" groupId="org.mitrai.com.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/SampleDataServiceAPI_metadata.yaml</file>
+    </artifact>
+</artifacts>

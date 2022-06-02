@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><sequence xmlns="http://ws.apache.org/ns/synapse" name="enrich">
+    <property name="messageType" value="application/xml" scope="axis2"/>
+    <log level="custom">
+        <property xmlns:ns="http://org.apache.synapse/xsd" name="SOURCE" expression="$body"/>
+    </log>
+    <property name="failureResultProperty" scope="default">
+        <result xmlns="">failure</result>
+    </property>
+    <enrich>
+        <source xmlns:ns="http://org.apache.synapse/xsd" clone="true" xpath="$ctx:failureResultProperty"/>
+        <target type="body" action="sibling"/>
+    </enrich>
+    <log level="custom">
+        <property xmlns:ns="http://org.apache.synapse/xsd" name="FINAL_OUTPUT" expression="."/>
+    </log>
+    <property name="messageType" value="application/soap+xml" scope="axis2"/>
+    <respond/>
+</sequence>

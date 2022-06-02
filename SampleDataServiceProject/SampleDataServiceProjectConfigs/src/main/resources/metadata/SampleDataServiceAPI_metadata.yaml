@@ -1,0 +1,11 @@
+---
+key: "SampleDataServiceAPI-1.0.0"
+name : "SampleDataServiceAPI"
+displayName : "SampleDataServiceAPI"
+description: "Sample API"
+version: "1.0.0"
+serviceUrl: "https://{MI_HOST}:{MI_PORT}/sample/dss"
+definitionType: "OAS3"
+securityType: "BASIC"
+mutualSSLEnabled: false
+apiId : "null"

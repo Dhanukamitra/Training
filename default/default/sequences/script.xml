@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><sequence xmlns="http://ws.apache.org/ns/synapse" name="script">
+    <script language="js">var result = "a";
+ result = result + "b";
+ mc.setProperty('result_str', result.toString());</script>
+    <log level="custom">
+        <property xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope" xmlns:ns3="http://org.apache.synapse/xsd" name="######" expression="$ctx:result_str"/>
+    </log>
+</sequence>

@@ -1,0 +1,65 @@
+<data transports="http https" serviceGroup="" serviceNamespace="" name="SampleDataService" enableBatchRequests="true">
+  <description />
+  <config id="SampleDataService">
+    <property name="driverClassName">com.mysql.jdbc.Driver</property>
+    <property name="url">jdbc:mysql://localhost:3306/mitrai</property>
+    <property name="username">root</property>
+    <property name="password">admin</property>
+  </config>
+  <resource method="GET" path="/selectALL">
+    <description />
+    <call-query href="selectALL" />
+  </resource>
+  <resource method="GET" path="/select/{id}">
+    <description />
+    <call-query href="selectByID">
+      <with-param name="id" query-param="id" />
+    </call-query>
+  </resource>
+  <query id="selectALL" useConfig="SampleDataService">
+    <sql>select * from mitraitest</sql>
+    <result element="Employees" rowName="Employee">
+      <element name="ID" column="id" xsdType="string" requiredRoles="" />
+      <element name="NAME" column="name" xsdType="string" requiredRoles="" />
+      <element name="CITY" column="city" xsdType="string" requiredRoles="" />
+    </result>
+  </query>
+  <query id="selectByID" useConfig="SampleDataService">
+    <sql>select * from mitraitest where id =:id</sql>
+    <param name="id" paramType="SCALAR" sqlType="STRING" />
+    <result element="Employees" rowName="Employee">
+      <element name="ID" column="id" xsdType="string" requiredRoles="" />
+      <element name="NAME" column="name" xsdType="string" requiredRoles="" />
+      <element name="CITY" column="city" xsdType="string" requiredRoles="" />
+    </result>
+  </query>
+  <query id="insertEmployee" useConfig="SampleDataService">
+    <sql>insert into mitraitest (id , name , city) values (:id , :name,:city)</sql>
+    <param type="IN" name="id" paramType="SCALAR" sqlType="STRING" optional="false" />
+    <param type="IN" name="name" paramType="SCALAR" sqlType="STRING" optional="false" />
+    <param type="IN" name="city" paramType="SCALAR" sqlType="STRING" optional="false" />
+  </query>
+  <operation name="selectALL">
+    <call-query href="selectALL" />
+  </operation>
+  <operation name="selectByID">
+    <call-query href="selectByID">
+      <with-param name="id" query-param="id" />
+    </call-query>
+  </operation>
+  <operation name="insertByID" returnRequestStatus="true">
+    <call-query href="insertEmployee">
+      <with-param name="id" query-param="id" />
+      <with-param name="name" query-param="name" />
+      <with-param name="city" query-param="city" />
+    </call-query>
+  </operation>
+  <resource method="POST" path="/insert" returnRequestStatus="true">
+    <description />
+    <call-query href="insertEmployee">
+      <with-param name="id" query-param="id" />
+      <with-param name="name" query-param="name" />
+      <with-param name="city" query-param="city" />
+    </call-query>
+  </resource>
+</data>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="SampleDataServiceEP" xmlns="http://ws.apache.org/ns/synapse">
+    <wsdl port="SOAP11Endpoint" service="SampleDataService" uri="http://localhost:8280/services/SampleDataService?wsdl">
+        <suspendOnFailure>
+            <initialDuration>-1</initialDuration>
+            <progressionFactor>1.0</progressionFactor>
+        </suspendOnFailure>
+        <markForSuspension>
+            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+        </markForSuspension>
+    </wsdl>
+</endpoint>
