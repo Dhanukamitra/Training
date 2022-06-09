@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="SampleDataMapperSEQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property name="messageType" scope="axis2" type="STRING" value="application/xml"/>
+    <log level="custom">
+        <property expression="$body" name="IN_DATA_MAPPER"/>
+    </log>
+    <datamapper config="gov:datamapper/SampleDataMapperConfig.dmc" inputSchema="gov:datamapper/SampleDataMapperConfig_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/SampleDataMapperConfig_outputSchema.json" outputType="XML" xsltStyleSheet="gov:datamapper/SampleDataMapperConfig_xsltStyleSheet.xml"/>
+</sequence>

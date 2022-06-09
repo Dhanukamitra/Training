@@ -5,10 +5,10 @@
     </log>
     <property name="messageType" scope="axis2" type="STRING" value="application/xml"/>
     <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
-    <property name="transport.vfs.ReplyFileURI" scope="default" type="STRING" value="test.xml"/>
+    <property name="transport.vfs.ReplyFileURI" scope="transport" type="STRING" value="test.xml"/>
     <send>
         <endpoint>
-            <address uri="vfs:file:///C:\Users\amite\OneDrive\Desktop">
+            <address uri="vfs:file:///C:\Users\mdhanuka\Desktop">
                 <suspendOnFailure>
                     <initialDuration>-1</initialDuration>
                     <progressionFactor>-1</progressionFactor>

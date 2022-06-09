@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/itragg" name="SampleIterateAggregateAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource inSequence="SampleIterateAggregateSeq" methods="POST">
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

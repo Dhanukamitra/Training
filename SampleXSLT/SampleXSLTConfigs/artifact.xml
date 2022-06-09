@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="samplesxslt" groupId="com.example.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/local-entries/samplesxslt.xml</file>
+    </artifact>
+    <artifact name="SampleXSLTSEQ" groupId="com.example.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/SampleXSLTSEQ.xml</file>
+    </artifact>
+    <artifact name="SampleXSLT" groupId="com.example.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/SampleXSLT.xml</file>
+    </artifact>
+    <artifact name="SampleXSLT_swagger" groupId="com.example.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/SampleXSLT_swagger.yaml</file>
+    </artifact>
+    <artifact name="SampleXSLT_metadata" groupId="com.example.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/SampleXSLT_metadata.yaml</file>
+    </artifact>
+</artifacts>

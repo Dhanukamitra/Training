@@ -1,16 +1,10 @@
-<data transports="http https" serviceGroup="" serviceNamespace="" name="SampleDataService" enableBatchRequests="true">
+<data enableBatchRequests="true" name="SampleDataService" serviceNamespace="" serviceGroup="" transports="http https">
   <description />
-  <config id="SampleDataService">
-    <property name="driverClassName">com.mysql.jdbc.Driver</property>
-    <property name="url">jdbc:mysql://localhost:3306/mitrai</property>
-    <property name="username">root</property>
-    <property name="password">admin</property>
-  </config>
-  <resource method="GET" path="/selectALL">
+  <resource path="/selectALL" method="GET">
     <description />
     <call-query href="selectALL" />
   </resource>
-  <resource method="GET" path="/select/{id}">
+  <resource path="/select/{id}" method="GET">
     <description />
     <call-query href="selectByID">
       <with-param name="id" query-param="id" />
@@ -18,26 +12,26 @@
   </resource>
   <query id="selectALL" useConfig="SampleDataService">
     <sql>select * from mitraitest</sql>
-    <result element="Employees" rowName="Employee">
-      <element name="ID" column="id" xsdType="string" requiredRoles="" />
-      <element name="NAME" column="name" xsdType="string" requiredRoles="" />
-      <element name="CITY" column="city" xsdType="string" requiredRoles="" />
+    <result rowName="Employee" element="Employees">
+      <element name="ID" requiredRoles="" xsdType="string" column="id" />
+      <element name="NAME" requiredRoles="" xsdType="string" column="name" />
+      <element name="CITY" requiredRoles="" xsdType="string" column="city" />
     </result>
   </query>
   <query id="selectByID" useConfig="SampleDataService">
     <sql>select * from mitraitest where id =:id</sql>
-    <param name="id" paramType="SCALAR" sqlType="STRING" />
-    <result element="Employees" rowName="Employee">
-      <element name="ID" column="id" xsdType="string" requiredRoles="" />
-      <element name="NAME" column="name" xsdType="string" requiredRoles="" />
-      <element name="CITY" column="city" xsdType="string" requiredRoles="" />
+    <param name="id" sqlType="STRING" paramType="SCALAR" />
+    <result rowName="Employee" element="Employees">
+      <element name="ID" requiredRoles="" xsdType="string" column="id" />
+      <element name="NAME" requiredRoles="" xsdType="string" column="name" />
+      <element name="CITY" requiredRoles="" xsdType="string" column="city" />
     </result>
   </query>
   <query id="insertEmployee" useConfig="SampleDataService">
     <sql>insert into mitraitest (id , name , city) values (:id , :name,:city)</sql>
-    <param type="IN" name="id" paramType="SCALAR" sqlType="STRING" optional="false" />
-    <param type="IN" name="name" paramType="SCALAR" sqlType="STRING" optional="false" />
-    <param type="IN" name="city" paramType="SCALAR" sqlType="STRING" optional="false" />
+    <param type="IN" name="id" sqlType="STRING" paramType="SCALAR" optional="false" />
+    <param type="IN" name="name" sqlType="STRING" paramType="SCALAR" optional="false" />
+    <param type="IN" name="city" sqlType="STRING" paramType="SCALAR" optional="false" />
   </query>
   <operation name="selectALL">
     <call-query href="selectALL" />
@@ -54,7 +48,7 @@
       <with-param name="city" query-param="city" />
     </call-query>
   </operation>
-  <resource method="POST" path="/insert" returnRequestStatus="true">
+  <resource path="/insert" method="POST" returnRequestStatus="true">
     <description />
     <call-query href="insertEmployee">
       <with-param name="id" query-param="id" />
@@ -62,4 +56,10 @@
       <with-param name="city" query-param="city" />
     </call-query>
   </resource>
+  <config id="SampleDataService">
+    <property name="driverClassName">com.mysql.jdbc.Driver</property>
+    <property name="url">jdbc:mysql://localhost:3306/mitrai</property>
+    <property name="username">root</property>
+    <property name="password">Dhanuka@9583</property>
+  </config>
 </data>

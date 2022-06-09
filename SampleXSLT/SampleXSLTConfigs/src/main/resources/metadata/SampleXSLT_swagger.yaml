@@ -1,0 +1,13 @@
+openapi: 3.0.1
+info:
+  title: SampleXSLT
+  description: API Definition of SampleXSLT
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/sample/xslt
+paths:
+  /:
+    post:
+      responses:
+        default:
+          description: Default response

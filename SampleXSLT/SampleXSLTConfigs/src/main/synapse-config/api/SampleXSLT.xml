@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/sample/xslt" name="SampleXSLT" xmlns="http://ws.apache.org/ns/synapse">
+    <resource inSequence="SampleXSLTSEQ" methods="POST">
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

@@ -1,0 +1,13 @@
+openapi: 3.0.1
+info:
+  title: SampleIterateAggregateAPI
+  description: API Definition of SampleIterateAggregateAPI
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/itragg
+paths:
+  /:
+    post:
+      responses:
+        default:
+          description: Default response
