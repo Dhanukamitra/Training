@@ -60,6 +60,6 @@
     <property name="driverClassName">com.mysql.jdbc.Driver</property>
     <property name="url">jdbc:mysql://localhost:3306/mitrai</property>
     <property name="username">root</property>
-    <property name="password">Dhanuka@9583</property>
+    <property name="password">admin</property>
   </config>
 </data>
